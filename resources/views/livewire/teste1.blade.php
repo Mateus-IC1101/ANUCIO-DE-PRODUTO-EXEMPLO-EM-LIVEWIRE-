@@ -8,8 +8,8 @@
                     class="py-2 px-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring
             focus:ring-indigo-100 focus:border-indigo-300"
                     type="text" wire:model="produto" placeholder="produto">
-                @error('message')
-                    <span class="error">{{ $message }}</span>
+                @error('produto')
+                    <div><span class="text-red-200">{{ $message }}</span></div>
                 @enderror
             </div>
 
@@ -17,7 +17,10 @@
                 <input
                     class="py-2 px-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring
         focus:ring-indigo-100 focus:border-indigo-300"
-                    number="text"placeholder="valor" wire:model="preco">
+                    type="number"placeholder="valor" wire:model="preco">
+                @error('preco')
+                    <div><span class="text-red-200">{{ $message }}</span></div>
+                @enderror
             </div>
 
             <div>
@@ -25,6 +28,9 @@
                     class="py-2 px-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring
             focus:ring-indigo-100 focus:border-indigo-300"
                     type="text" placeholder="observação" wire:model="obs">
+                @error('obs')
+                    <div><span class="text-red-200">{{ $message }}</span></div>
+                @enderror
             </div>
 
         </div>

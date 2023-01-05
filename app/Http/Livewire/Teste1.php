@@ -11,18 +11,23 @@ class Teste1 extends Component
 {
     use WithFileUploads;
 
-    public $nome;
+    public $produto;
     public $preco;
     public $obs;
     public $photo;
 
     protected $rules = [
-        'message' => 'required',
+        'produto' => 'required',
+        'preco' => 'required',
+        'obs' => 'required|max:10',
         'photo' => 'max:1024'
     ];
     protected $messages = [
-        'message.required' => 'Campo não pode ser vazio',
-        'message.max' => 'Imagem muito grande. Tente uma resolução igual ou abaixo de 1024'
+        'produto.required' => 'Campo obrigatório',
+        'preco.required' => 'Campo obrigatório',
+        'obs.required' => 'Campo obrigatório',
+        'obs.max' => 'O limite máximo é de caracteres 10 caracters',
+        'photo.max' => 'Imagem muito grande. Tente uma resolução igual ou abaixo de 1024'
     ];
 
     public function render()
@@ -33,9 +38,10 @@ class Teste1 extends Component
 
     public function create()
     {
-        // $this->validate();
-        $dados = $this->renderToView();
-        dd($this->photo);
+        $this->validate();
+        // $dados = $this->renderToView();
+        // dd($this->photo);
         // $this->photo->store('photos');
+        return;
     }
 }
