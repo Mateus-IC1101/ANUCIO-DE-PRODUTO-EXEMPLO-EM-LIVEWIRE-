@@ -41,10 +41,12 @@ class Teste1 extends Component
         $this->validate();
 
         $valor = floatval($this->preco);
+        $photo_name = str_replace('photos/', '', $this->photo->store('photos'));
 
         Produto::create([
             'produto' => $this->produto,
             'preco' => $valor,
+            'photo' => $photo_name,
             'obs' => $this->obs
         ]);
         return;

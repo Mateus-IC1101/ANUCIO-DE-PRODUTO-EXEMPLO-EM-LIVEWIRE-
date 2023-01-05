@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('produto');
             $table->decimal('preco');
+            $table->text('photo');
             $table->text('obs');
             $table->timestamps();
         });
