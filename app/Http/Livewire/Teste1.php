@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Produto;
 use Livewire\WithFileUploads;
 
 
@@ -32,16 +33,20 @@ class Teste1 extends Component
 
     public function render()
     {
-        $dados = ['mateus', 'Maria', 'Carlos'];
-        return view('livewire.teste1', compact('dados'));
+        return view('livewire.teste1');
     }
 
     public function create()
     {
         $this->validate();
-        // $dados = $this->renderToView();
-        // dd($this->photo);
-        // $this->photo->store('photos');
+
+        $valor = floatval($this->preco);
+
+        Produto::create([
+            'produto' => $this->produto,
+            'preco' => $valor,
+            'obs' => $this->obs
+        ]);
         return;
     }
 }

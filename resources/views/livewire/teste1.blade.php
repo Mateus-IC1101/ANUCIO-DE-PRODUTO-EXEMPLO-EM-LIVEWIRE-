@@ -14,10 +14,10 @@
             </div>
 
             <div>
-                <input
+                <input onkeypress="mascara(this,mreais)"
                     class="py-2 px-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring
         focus:ring-indigo-100 focus:border-indigo-300"
-                    type="number"placeholder="valor" wire:model="preco">
+                    type="text"placeholder="valor" wire:model="preco">
                 @error('preco')
                     <div><span class="text-red-200">{{ $message }}</span></div>
                 @enderror
@@ -63,3 +63,5 @@
     </form>
 
 </div>
+
+<script type="text/javascript" src="{{ '/js/functions.js' }}"></script>

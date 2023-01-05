@@ -16,8 +16,4 @@ use App\Http\Livewire\{
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/teste-1', Teste1::class);
+Route::get('/', Teste1::class);
