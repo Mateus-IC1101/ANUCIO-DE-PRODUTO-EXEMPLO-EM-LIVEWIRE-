@@ -41,7 +41,7 @@ class Teste1 extends Component
         $this->validate();
 
         $valor = floatval($this->preco);
-        $photo_name = str_replace('photos/', '', $this->photo->store('photos'));
+        !empty($this->photo) ? $photo_name = str_replace('photos/', '', $this->photo->store('photos')) : $photo_name = '';
 
         Produto::create([
             'produto' => $this->produto,
@@ -49,6 +49,30 @@ class Teste1 extends Component
             'photo' => $photo_name,
             'obs' => $this->obs
         ]);
+
+        $messages = [
+            'A blessing in disguise',
+            'Bite the bullet',
+            'Call it a day',
+            'Easy does it',
+            'Make a long story short',
+            'Miss the boat',
+            'To get bent out of shape',
+            'Birds of a feather flock together',
+            "Don't cry over spilt milk",
+            'Good things come',
+            'Live and learn',
+            'Once in a blue moon',
+            'Spill the beans',
+        ];
+
+
+        $this->dispatchBrowserEvent(
+            'notify',
+            // $messages[array_rand($messages)]
+            ['enviando evento para front-end']
+        );
+
         return;
     }
 }

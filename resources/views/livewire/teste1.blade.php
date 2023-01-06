@@ -1,8 +1,8 @@
-<div class="bg-[#700ef1]">
+<div class="bg-[#7B68EE]">
     <h1 class="text-white text-3xl mt-5"><strong>Seu produto para venda</strong></h1>
     <br><br>
     <form method="POST" wire:submit.prevent="create">
-        <div class="columns-3">
+        <div class="columns-3 w-100">
             <div>
                 <input
                     class="py-2 px-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring
@@ -59,9 +59,26 @@
             class="py-2 mt-5 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
             Enviar
         </button>
-
     </form>
+
+    <div class="templateNotify">
+    </div>
+    <br>
+    <br>
 
 </div>
 
 <script type="text/javascript" src="{{ '/js/mask/mask_valor.js' }}"></script>
+
+<script type="text/javascript">
+    window.addEventListener('notify', event => {
+        console.log(event);
+        var notify = document.querySelector(".templateNotify");
+        var classes = ['bg-green-100', 'rounded-lg', 'py-5', 'px-6', 'mb-4', 'text-base', 'text-green-700',
+            'mt-5', 'mb-5'
+        ]
+        notify.classList.add(...classes);
+        notify.innerText = 'Produto anuciado com sucesso!';
+        console.log(notify);
+    });
+</script>
