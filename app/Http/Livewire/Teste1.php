@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Produto;
+use Exception;
 use Livewire\WithFileUploads;
 
 
@@ -38,41 +39,51 @@ class Teste1 extends Component
 
     public function create()
     {
-        $this->validate();
+        try {
+            $this->validate();
 
-        $valor = floatval($this->preco);
-        !empty($this->photo) ? $photo_name = str_replace('photos/', '', $this->photo->store('photos')) : $photo_name = '';
+            $valor = floatval($this->preco);
+            if (!$this->photo) {
+                $this->dispatchBrowserEvent(
+                    'notifyError',
+                    ['enviando evento para front-end']
+                );
+                throw new Exception("imagem não inserida", 1);
+            }
+            !empty($this->photo) ? $photo_name = str_replace('photos/', '', $this->photo->store('photos')) : $photo_name = '';
 
-        Produto::create([
-            'produto' => $this->produto,
-            'preco' => $valor,
-            'photo' => $photo_name,
-            'obs' => $this->obs
-        ]);
+            Produto::create([
+                'produto' => $this->produto,
+                'preco' => $valor,
+                'photo' => $photo_name,
+                'obs' => $this->obs
+            ]);
 
-        $messages = [
-            'A blessing in disguise',
-            'Bite the bullet',
-            'Call it a day',
-            'Easy does it',
-            'Make a long story short',
-            'Miss the boat',
-            'To get bent out of shape',
-            'Birds of a feather flock together',
-            "Don't cry over spilt milk",
-            'Good things come',
-            'Live and learn',
-            'Once in a blue moon',
-            'Spill the beans',
-        ];
+            $messages = [
+                'A blessing in disguise',
+                'Bite the bullet',
+                'Call it a day',
+                'Easy does it',
+                'Make a long story short',
+                'Miss the boat',
+                'To get bent out of shape',
+                'Birds of a feather flock together',
+                "Don't cry over spilt milk",
+                'Good things come',
+                'Live and learn',
+                'Once in a blue moon',
+                'Spill the beans',
+            ];
 
 
-        $this->dispatchBrowserEvent(
-            'notify',
-            // $messages[array_rand($messages)]
-            ['enviando evento para front-end']
-        );
-
-        return;
+            $this->dispatchBrowserEvent(
+                'notifySuccess',
+                // $messages[array_rand($messages)]
+                ['enviando evento para front-end']
+            );
+            return;
+        } catch (\Throwable $th) {
+            return $th;
+        }
     }
 }

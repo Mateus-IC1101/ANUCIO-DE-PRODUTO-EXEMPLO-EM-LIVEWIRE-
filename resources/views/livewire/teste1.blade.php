@@ -71,14 +71,25 @@
 <script type="text/javascript" src="{{ '/js/mask/mask_valor.js' }}"></script>
 
 <script type="text/javascript">
-    window.addEventListener('notify', event => {
+    window.addEventListener('notifySuccess', event => {
         console.log(event);
-        var notify = document.querySelector(".templateNotify");
+        var element_notify = document.querySelector(".templateNotify");
         var classes = ['bg-green-100', 'rounded-lg', 'py-5', 'px-6', 'mb-4', 'text-base', 'text-green-700',
             'mt-5', 'mb-5'
         ]
-        notify.classList.add(...classes);
-        notify.innerText = 'Produto anuciado com sucesso!';
-        console.log(notify);
+        element_notify.classList.add(...classes);
+        element_notify.innerText = 'Produto anuciado com sucesso!';
+        console.log(element_notify);
+    });
+
+    window.addEventListener('notifyError', event => {
+        console.log(event);
+        var element_notify = document.querySelector(".templateNotify");
+        var classes = ['bg-red-100', 'rounded-lg', 'py-5', 'px-6', 'mb-4', 'text-base', 'text-red-700',
+            'mt-5', 'mb-5'
+        ]
+        element_notify.classList.add(...classes);
+        element_notify.innerText = 'Error! A imagem do produto não foi enviada.';
+        console.log(element_notify);
     });
 </script>
