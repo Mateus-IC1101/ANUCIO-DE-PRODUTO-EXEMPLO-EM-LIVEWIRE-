@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\{
     Teste1,
+    AnuciosAll
 };
 
 /*
@@ -16,4 +17,5 @@ use App\Http\Livewire\{
 |
 */
 
-Route::get('/', Teste1::class);
+Route::get('/', Teste1::class)->name('anucioCreate');
+Route::get('/anucios-all', AnuciosAll::class)->name('anuciosAll');

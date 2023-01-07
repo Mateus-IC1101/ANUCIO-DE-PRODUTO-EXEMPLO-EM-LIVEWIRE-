@@ -39,17 +39,27 @@ class Teste1 extends Component
 
     public function create()
     {
+        $this->validate();
+
         try {
-            $this->validate();
 
             $valor = floatval($this->preco);
+
             if (!$this->photo) {
                 $this->dispatchBrowserEvent(
                     'notifyError',
                     ['enviando evento para front-end']
                 );
-                throw new Exception("imagem não inserida", 1);
+
+                $this->alert('error', 'Hello!', [
+                    'position' => 'center',
+                    'timer' => 3000,
+                    'toast' => true,
+                ]);
+                return;
+                // throw new Exception("imagem não inserida", 1);
             }
+
             !empty($this->photo) ? $photo_name = str_replace('photos/', '', $this->photo->store('photos')) : $photo_name = '';
 
             Produto::create([
