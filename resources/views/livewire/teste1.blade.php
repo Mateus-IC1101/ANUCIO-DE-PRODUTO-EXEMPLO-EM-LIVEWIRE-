@@ -1,4 +1,4 @@
-<div class="bg-[#7B68EE]">
+<div class="bg-black">
     <h1 class="text-white text-3xl mt-5"><strong>Seu produto para venda</strong></h1>
     <br><br>
     <form method="POST" wire:submit.prevent="create">
@@ -72,24 +72,49 @@
 
 <script type="text/javascript">
     window.addEventListener('notifySuccess', event => {
-        console.log(event);
-        var element_notify = document.querySelector(".templateNotify");
-        var classes = ['bg-green-100', 'rounded-lg', 'py-5', 'px-6', 'mb-4', 'text-base', 'text-green-700',
-            'mt-5', 'mb-5'
-        ]
-        element_notify.classList.add(...classes);
-        element_notify.innerText = 'Produto anuciado com sucesso!';
-        console.log(element_notify);
+
+        const ToastSucess = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3500,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        ToastSucess.fire({
+            icon: 'success',
+            title: "<h1 style='color:white'>Produto anuciado com sucesso</h1>",
+            background: '#2dd259',
+        });
+
+        // console.log(event);
+        // var element_notify = document.querySelector(".templateNotify");
+        // var classes = ['bg-green-100', 'rounded-lg', 'py-5', 'px-6', 'mb-4', 'text-base', 'text-green-700',
+        //     'mt-5', 'mb-5'
+        // ]
+        // element_notify.classList.add(...classes);
+        // element_notify.innerText = 'Produto anuciado com sucesso!';
+        // console.log(element_notify);
     });
 
     window.addEventListener('notifyError', event => {
-        console.log(event);
-        var element_notify = document.querySelector(".templateNotify");
-        var classes = ['bg-red-100', 'rounded-lg', 'py-5', 'px-6', 'mb-4', 'text-base', 'text-red-700',
-            'mt-5', 'mb-5'
-        ]
-        element_notify.classList.add(...classes);
-        element_notify.innerText = 'Error! A imagem do produto não foi enviada.';
-        console.log(element_notify);
+
+        Swal.fire(
+            'Não foi possível prosseguir',
+            'Por favor, envie uma imagem do produto',
+            'error'
+        );
+        // console.log(event);
+        // var element_notify = document.querySelector(".templateNotify");
+        // var classes = ['bg-red-100', 'rounded-lg', 'py-5', 'px-6', 'mb-4', 'text-base', 'text-red-700',
+        //     'mt-5', 'mb-5'
+        // ]
+        // element_notify.classList.add(...classes);
+        // element_notify.innerText = 'Error! A imagem do produto não foi enviada.';
+        // console.log(element_notify);
     });
 </script>
