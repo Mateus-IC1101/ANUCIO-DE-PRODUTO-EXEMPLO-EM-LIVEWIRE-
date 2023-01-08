@@ -91,6 +91,11 @@
             background: '#2dd259',
         });
 
+        var elementos = document.querySelectorAll('input');
+        console.log(elementos[0]);
+        console.log(elementos[1]);
+        console.log(elementos[2].value);
+
         // console.log(event);
         // var element_notify = document.querySelector(".templateNotify");
         // var classes = ['bg-green-100', 'rounded-lg', 'py-5', 'px-6', 'mb-4', 'text-base', 'text-green-700',
