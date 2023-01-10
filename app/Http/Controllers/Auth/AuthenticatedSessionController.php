@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\EventEnvioDeEmail;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -29,6 +30,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        event(new EventEnvioDeEmail());
+        // dump('chamando evento pelo login...');
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
