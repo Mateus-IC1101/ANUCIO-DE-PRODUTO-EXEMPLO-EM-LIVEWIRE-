@@ -28,10 +28,7 @@ class ListenerEnvioDeEmail
      */
     public function handle(EventEnvioDeEmail $event)
     {
-        $testMailData = [
-            'title' => 'Teste do laravel',
-            'body' => 'e-mail enviado pelo laravel'
-        ];
+        $testMailData = $event->nome;
 
         Mail::to('mateus.dolglas8@gmail.com')->send(new SendMail($testMailData));
     }

@@ -21,14 +21,11 @@ class EventEnvioDeEmail
      *
      * @return void
      */
-    public function __construct()
-    {
-        // $testMailData = [
-        //     'title' => 'Teste do laravel',
-        //     'body' => 'e-mail enviado pelo laravel'
-        // ];
+    public readonly string $nome;
 
-        // Mail::to('mateus.dolglas8@gmail.com')->send(new SendMail($testMailData));
+    public function __construct(String $nome)
+    {
+        $this->nome = $nome;
     }
 
     /**

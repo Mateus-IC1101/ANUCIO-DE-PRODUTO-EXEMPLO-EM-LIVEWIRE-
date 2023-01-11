@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        event(new EventEnvioDeEmail());
+        event(new EventEnvioDeEmail('Login efetuado na sua conta'));
         // dump('chamando evento pelo login...');
         return redirect()->intended(RouteServiceProvider::HOME);
     }

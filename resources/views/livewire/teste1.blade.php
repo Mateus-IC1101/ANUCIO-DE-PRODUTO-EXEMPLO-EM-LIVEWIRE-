@@ -1,5 +1,5 @@
 <div class="bg-black">
-    <h1 class="text-white text-3xl mt-5"><strong>Seu produto para venda</strong></h1>
+    <h1 class="text-white text-3xl"><strong>Seu produto para venda</strong></h1>
     <br><br>
     <form method="POST" wire:submit.prevent="create">
         <div class="columns-3 w-100">
@@ -7,7 +7,7 @@
                 <input
                     class="py-2 px-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring
             focus:ring-indigo-100 focus:border-indigo-300"
-                    type="text" wire:model="produto" placeholder="produto">
+                    type="text" name="produto" wire:model="produto" placeholder="produto">
                 @error('produto')
                     <div><span class="text-red-200">{{ $message }}</span></div>
                 @enderror
@@ -17,7 +17,7 @@
                 <input onkeypress="mascara(this,mreais)"
                     class="py-2 px-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring
         focus:ring-indigo-100 focus:border-indigo-300"
-                    type="text"placeholder="valor" wire:model="preco">
+                    type="text"placeholder="valor" name="preco" wire:model="preco">
                 @error('preco')
                     <div><span class="text-red-200">{{ $message }}</span></div>
                 @enderror
@@ -27,7 +27,7 @@
                 <input
                     class="py-2 px-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring
             focus:ring-indigo-100 focus:border-indigo-300"
-                    type="text" placeholder="observação" wire:model="obs">
+                    type="text" placeholder="observação" name="obs" wire:model="obs">
                 @error('obs')
                     <div><span class="text-red-200">{{ $message }}</span></div>
                 @enderror
@@ -68,58 +68,5 @@
 
 </div>
 
-<script type="text/javascript" src="{{ '/js/mask/mask_valor.js' }}"></script>
-
-<script type="text/javascript">
-    window.addEventListener('notifySuccess', event => {
-
-        const ToastSucess = Swal.mixin({
-            toast: true,
-            position: 'bottom-end',
-            showConfirmButton: false,
-            timer: 3500,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-
-        ToastSucess.fire({
-            icon: 'success',
-            title: "<h1 style='color:white'>Produto anuciado com sucesso</h1>",
-            background: '#2dd259',
-        });
-
-        var elementos = document.querySelectorAll('input');
-        console.log(elementos[0]);
-        console.log(elementos[1]);
-        console.log(elementos[2].value);
-
-        // console.log(event);
-        // var element_notify = document.querySelector(".templateNotify");
-        // var classes = ['bg-green-100', 'rounded-lg', 'py-5', 'px-6', 'mb-4', 'text-base', 'text-green-700',
-        //     'mt-5', 'mb-5'
-        // ]
-        // element_notify.classList.add(...classes);
-        // element_notify.innerText = 'Produto anuciado com sucesso!';
-        // console.log(element_notify);
-    });
-
-    window.addEventListener('notifyError', event => {
-
-        Swal.fire(
-            'Não foi possível prosseguir',
-            'Por favor, envie uma imagem do produto',
-            'error'
-        );
-        // console.log(event);
-        // var element_notify = document.querySelector(".templateNotify");
-        // var classes = ['bg-red-100', 'rounded-lg', 'py-5', 'px-6', 'mb-4', 'text-base', 'text-red-700',
-        //     'mt-5', 'mb-5'
-        // ]
-        // element_notify.classList.add(...classes);
-        // element_notify.innerText = 'Error! A imagem do produto não foi enviada.';
-        // console.log(element_notify);
-    });
-</script>
+<script type="text/javascript" src="{{ '/js/teste1/mask_valor.js' }}"></script>
+<script type="text/javascript" src="{{ '/js/teste1/listener_escuta_evento.js' }}"></script>

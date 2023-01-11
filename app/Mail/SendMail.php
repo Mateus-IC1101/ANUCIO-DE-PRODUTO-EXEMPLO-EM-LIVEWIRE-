@@ -19,9 +19,11 @@ class SendMail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    private readonly string $nome;
+
+    public function __construct(String $nome)
     {
-        //
+        $this->nome = $nome;
     }
 
     /**
@@ -33,7 +35,7 @@ class SendMail extends Mailable
     {
         return new Envelope(
             from: new Address('mateus.dolglasgames@gmail.com', 'Jeffrey Way'),
-            subject: 'Order Shipped',
+            subject: $this->nome,
         );
     }
 
@@ -45,7 +47,8 @@ class SendMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'email.emailLogin',
+            markdown: 'email.emailLogin',
+            with: []
         );
     }
 
