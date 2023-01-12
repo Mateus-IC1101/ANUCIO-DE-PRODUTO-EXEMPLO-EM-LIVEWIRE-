@@ -30,6 +30,6 @@ class ListenerEnvioDeEmail
     {
         $testMailData = $event->nome;
 
-        Mail::to('mateus.dolglas8@gmail.com')->send(new SendMail($testMailData));
+        Mail::to('mateus.dolglas8@gmail.com')->later('30', new SendMail($testMailData));
     }
 }
