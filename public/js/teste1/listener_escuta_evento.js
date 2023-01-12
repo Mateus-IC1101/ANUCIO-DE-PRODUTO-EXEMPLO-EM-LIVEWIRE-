@@ -18,9 +18,9 @@ window.addEventListener('notifySuccess', event => {
         background: '#2dd259',
     });
 
-    document.querySelector('input[name="produto"]').value = '';
-    document.querySelector('input[name="preco"]').value = '';
-    document.querySelector('input[name="obs"]').value = '';
+    document.querySelector('input[name="produto"]').value = null;
+    document.querySelector('input[name="preco"]').value = null;
+    document.querySelector('input[name="obs"]').value = null;
 
 });
 
