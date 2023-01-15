@@ -17,6 +17,9 @@ class Teste1 extends Component
     public $preco;
     public $obs;
     public $photo;
+    public $paises = [];
+
+    private $check_validation_inputs = [];
 
     protected $rules = [
         'produto' => 'required',
@@ -39,54 +42,47 @@ class Teste1 extends Component
 
     public function create()
     {
-        $this->validate();
+        // $this->validate();
 
         try {
 
             $valor = floatval($this->preco);
 
-            // if (!$this->photo) {
-            //     $this->dispatchBrowserEvent(
-            //         'notifyError',
-            //         ['enviando evento para front-end']
-            //     );
-            //     throw new Exception("imagem não inserida", 1);
-            // }
+            $this->checkDadosVazios();
 
             !empty($this->photo) ? $photo_name = str_replace('photos/', '', $this->photo->store('photos')) : $photo_name = '';
 
             Produto::create([
                 'produto' => $this->produto,
                 'preco' => $valor,
+                'obs' => $this->obs,
                 'photo' => $photo_name,
-                'obs' => $this->obs
+                'paises' => $this->paises,
             ]);
-
-            $messages = [
-                'A blessing in disguise',
-                'Bite the bullet',
-                'Call it a day',
-                'Easy does it',
-                'Make a long story short',
-                'Miss the boat',
-                'To get bent out of shape',
-                'Birds of a feather flock together',
-                "Don't cry over spilt milk",
-                'Good things come',
-                'Live and learn',
-                'Once in a blue moon',
-                'Spill the beans',
-            ];
 
 
             $this->dispatchBrowserEvent(
                 'notifySuccess',
-                // $messages[array_rand($messages)]
                 ['enviando evento para front-end']
             );
             return;
         } catch (\Throwable $th) {
             return $th;
+        }
+    }
+
+    public function checkDadosVazios()
+    {
+        !$this->produto ? array_push($this->check_validation_inputs, 'produto') : false;
+        !$this->preco ? array_push($this->check_validation_inputs, 'preco') : false;
+        !$this->obs ? array_push($this->check_validation_inputs, 'obs') : false;
+
+        if ($this->check_validation_inputs) {
+            $this->dispatchBrowserEvent(
+                'notifyError',
+                ['enviando evento para front-end']
+            );
+            throw new Exception("imagem não inserida", 1);
         }
     }
 }

@@ -28,7 +28,7 @@ window.addEventListener('notifyError', event => {
 
     Swal.fire(
         'Não foi possível prosseguir',
-        'Por favor, envie uma imagem do produto',
+        'Dados Vazios',
         'error'
     );
 });

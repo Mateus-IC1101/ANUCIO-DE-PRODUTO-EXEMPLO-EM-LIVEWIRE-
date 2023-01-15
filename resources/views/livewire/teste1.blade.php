@@ -1,8 +1,8 @@
-<div style="background-color:indigo">
+<div>
     <h1 class="text-white text-3xl"><strong>Seu produto para venda</strong></h1>
     <br><br>
     <form method="POST" wire:submit.prevent="create">
-        <div>
+        <div class="m-5">
             <label for="dropzone-file"
                 class="mx-auto m-5 cursor-pointer flex w-full max-w-lg flex-col items-center rounded-xl border-2 border-dashed border-blue-400 bg-white p-6 text-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500" fill="none" viewBox="0 0 24 24"
@@ -21,26 +21,30 @@
                     <span class="error">{{ $message }}</span>
                 @enderror
         </div>
-        <div class="d-flex">
+        <div class="d-flex m-5 selectApi">
+
+        </div>
+        <div class="d-flex m-5">
             <input
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                class="shadow-sm bg-red-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 type="text" name="produto" wire:model="produto" placeholder="produto">
             @error('produto')
                 <div><span class="text-red-200">{{ $message }}</span></div>
             @enderror
 
             <input
-                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                class="mt-3 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 onkeypress="mascara(this,mreais)" type="text"placeholder="valor" name="preco" wire:model="preco">
             @error('preco')
                 <div><span class="text-red-200">{{ $message }}</span></div>
             @enderror
 
-            <input class="rounded-md" type="text" placeholder="observação" name="obs" wire:model="obs">
+            <textarea rows="4"
+                class="mt-3 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="text" placeholder="observação" name="obs" wire:model="obs"></textarea>
             @error('obs')
                 <div><span class="text-red-200">{{ $message }}</span></div>
             @enderror
-
         </div>
 
 
@@ -60,3 +64,10 @@
 
 <script type="text/javascript" src="{{ '/js/teste1/mask_valor.js' }}"></script>
 <script type="text/javascript" src="{{ '/js/teste1/listener_escuta_evento.js' }}"></script>
+<script type="text/javascript" src="{{ '/js/teste1/api_estados.js' }}"></script>
+
+<script type="text/javascript">
+    window.onload = (event) => {
+        console.log("page is fully loaded");
+    };
+</script>
