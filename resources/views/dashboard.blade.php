@@ -15,3 +15,5 @@
         </div>
     </div>
 </x-app-layout>
+
+<script type="text/javascript" src="{{ '/js/teste1/api_estados.js' }}"></script>

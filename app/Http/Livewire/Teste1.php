@@ -17,14 +17,14 @@ class Teste1 extends Component
     public $preco;
     public $obs;
     public $photo;
-    public $paises = [];
+    public $estados = [];
 
     private $check_validation_inputs = [];
 
     protected $rules = [
         'produto' => 'required',
         'preco' => 'required',
-        'obs' => 'required|max:10',
+        'obs' => 'required|max:5000',
         'photo' => 'max:1024'
     ];
     protected $messages = [
@@ -43,7 +43,6 @@ class Teste1 extends Component
     public function create()
     {
         // $this->validate();
-
         try {
 
             $valor = floatval($this->preco);
@@ -57,7 +56,7 @@ class Teste1 extends Component
                 'preco' => $valor,
                 'obs' => $this->obs,
                 'photo' => $photo_name,
-                'paises' => $this->paises,
+                'estados' => $this->estados,
             ]);
 
 
@@ -79,10 +78,10 @@ class Teste1 extends Component
 
         if ($this->check_validation_inputs) {
             $this->dispatchBrowserEvent(
-                'notifyError',
+                'notifyValidation',
                 ['enviando evento para front-end']
             );
-            throw new Exception("imagem não inserida", 1);
+            throw new Exception("Error vazios", 1);
         }
     }
 }

@@ -12,14 +12,14 @@ class Produto extends Model
     protected $table = 'produtos';
 
     protected $casts = [
-        'paises' => 'array',
+        'estados' => 'array',
     ];
 
     protected $fillable = [
         'produto',
         'preco',
         'photo',
-        'paises',
+        'estados',
         'obs'
     ];
 }
